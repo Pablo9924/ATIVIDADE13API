@@ -2,7 +2,7 @@
 import pkg from "pg";
 const { Pool } = pkg;
 
-async function connect() {
+async function Connect() {
   const pool = new Pool({
     connectionString: process.env.URL_BD,
   });
@@ -10,7 +10,7 @@ async function connect() {
 }
 
 async function selectUsuarios() {
-  const client = await connect();
+  const client = await Connect();
   const res = await client.query("SELECT * FROM usuario");
 	  client.release();
   return res.rows;
