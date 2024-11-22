@@ -1,6 +1,5 @@
 //bd.js
 import pkg from "pg";
-
 const { Pool } = pkg;
 
 async function connect() {
