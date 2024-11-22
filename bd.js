@@ -1,19 +1,23 @@
 //bd.js
 import pkg from "pg";
+
 const { Pool } = pkg;
 
-async function connect() {
-  const pool = new Pool({
-    connectionString: process.env.URL_BD,
-  });
-  return pool.connect();
-}
-
 async function selectUsuarios() {
-  const client = await connect();
+  const client = await coneccao();
   const res = await client.query("SELECT * FROM usuario");
-	  client.release();
+  client.release();
   return res.rows;
 }
 
+async function coneccao() {
+  const pool = new Pool({
+    connectionString: process.env.URL_BD,
+  });
+  return pool.conneccao();
+}
+
+//bd.js
+
 export { selectUsuarios };
+
